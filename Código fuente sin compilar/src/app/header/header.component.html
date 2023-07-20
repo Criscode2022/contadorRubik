@@ -1,0 +1,133 @@
+<mat-drawer-container class="example-container">
+  <mat-drawer #drawer class="example-sidenav" mode="over">
+    <div id="botonesbarra">
+      <p>
+        <button
+          routerLink="2x2"
+          mat-raised-button
+          color="warn"
+          (click)="drawer.toggle()"
+        >
+          2x2
+        </button>
+      </p>
+      <p>
+        <button
+          routerLink="3x3"
+          mat-raised-button
+          color="warn"
+          (click)="drawer.toggle()"
+        >
+          3x3
+        </button>
+      </p>
+      <p>
+        <button
+          routerLink="4x4"
+          mat-raised-button
+          color="warn"
+          (click)="drawer.toggle()"
+        >
+          4x4
+        </button>
+      </p>
+    </div>
+  </mat-drawer>
+</mat-drawer-container>
+
+<div class="example-sidenav-content">
+  <span id="navmobp">
+    <mat-toolbar id="toolb" color="primary">
+      <span id="sto" routerLink="vertodo"><mat-icon>star</mat-icon></span>
+      <span routerLink="/">GaliRubik</span>
+      <span class="example-spacer"></span>
+      <span>
+        <mat-slide-toggle [(ngModel)]="musica" (ngModelChange)="cambiarMusica()"
+          ><mat-icon>music_note</mat-icon></mat-slide-toggle
+        >
+      </span>
+      <button id="bubarra" type="button" mat-button (click)="drawer.toggle()">
+        <ng-container *ngIf="!drawer.opened">
+          <mat-icon>menu</mat-icon>
+        </ng-container>
+        <ng-container *ngIf="drawer.opened">
+          <mat-icon>close</mat-icon>
+        </ng-container>
+      </button>
+    </mat-toolbar>
+  </span>
+</div>
+
+<div id="escritorio">
+  <nav>
+    <mat-toolbar color="primary">
+      <button
+        id="buttonHistorial"
+        mat-raised-button
+        color="warn"
+        type="button"
+        routerLink="vertodo"
+      >
+        Ver o teu historial de tempos rexistrados
+      </button>
+
+      <div id="musica">
+        <mat-slide-toggle [(ngModel)]="musica" (ngModelChange)="cambiarMusica()"
+          ><mat-icon>music_note</mat-icon></mat-slide-toggle
+        >
+      </div>
+
+      <mat-toolbar-row id="linea1">
+        <span class="example-spacer"></span>
+        <span routerLink="/" id="titulo">GaliRubik</span>
+        <span>
+          <audio
+            #myAudio
+            src="https://github.com/Criscode2022/contadorRubik/blob/main/assets/You%20%E2%80%94%20myuu%20(128%20kbps).mp3?raw=true"
+            [autoplay]="musica"
+          ></audio>
+        </span>
+      </mat-toolbar-row>
+
+      <mat-toolbar-row id="linea2">
+        <div
+          id="div2"
+          routerLink="2x2"
+          routerLinkActive="active"
+          mat-button
+          color="accent"
+        >
+          2x2
+        </div>
+
+        <div
+          id="div3"
+          mat-button
+          routerLink="3x3"
+          routerLinkActive="active"
+          color="accent"
+        >
+          3x3
+        </div>
+
+        <div
+          id="div4"
+          mat-button
+          routerLink="4x4"
+          routerLinkActive="active"
+          color="accent"
+        >
+          4x4
+        </div>
+      </mat-toolbar-row>
+      <mat-toolbar-row id="linea2">
+        <div>
+          {{
+            algoritmosService.jsonData[algoritmosService.aleatorio]?.algoritmo
+          }}
+          <mat-icon id="change" (click)="generarAleatorio()">replay</mat-icon>
+        </div>
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </nav>
+</div>

@@ -1,0 +1,65 @@
+<h1 [ngClass]="{ 'rotate-cube': timerActive }">3x3</h1>
+
+<div class="button-container">
+  <button
+    mat-raised-button
+    color="primary"
+    type="button"
+    [disabled]="timerActive"
+  >
+    Start
+  </button>
+  <button
+    mat-raised-button
+    color="warn"
+    type="button"
+    [disabled]="!timerActive"
+  >
+    Stop
+  </button>
+</div>
+
+<div>
+  <p id="timeBig">{{ tiempo }}</p>
+  <p id="timeMed" (click)="timerActive ? stopTimer() : startTimer()">
+    {{ tiempo }}
+  </p>
+  <p id="timeSma" (click)="timerActive ? stopTimer() : startTimer()">
+    {{ tiempo }}
+  </p>
+</div>
+
+<div id="howto">
+  <p>Iniciar/Parar tempo: Espazo</p>
+  <p>Rexistrar tempo: Enter</p>
+</div>
+
+<!-- Se muestran diferentes mensajes en smarthpones y tablets porque el control del cronómetro obedece a diferentes eventos -->
+<div id="howtoMob">
+  <p>Iniciar/Parar tempo: Click no contador</p>
+  <p>Rexistrar tempo: Click no botón flotante</p>
+</div>
+
+<div id="resultados">
+  <h2>Tempos desta sesión:</h2>
+  <h2 class="float">Media desta sesión: {{ avg3 }}"</h2>
+</div>
+<div>
+  <ol>
+    <li *ngFor="let tiempo3 of tiempos3x3">{{ tiempo3 }}"</li>
+  </ol>
+
+  <button
+    class="fixed"
+    (click)="insertartiempo3()"
+    mat-fab
+    color="primary"
+    aria-label="Example icon button with a delete icon"
+  >
+    <mat-icon>save</mat-icon>
+  </button>
+</div>
+
+<footer>
+  Podes ver o teu historial de tempos rexistrados premendo na estrela
+</footer>
