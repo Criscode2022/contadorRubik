@@ -1,0 +1,22 @@
+h1 {
+  background-color: green;
+}
+
+div {
+  margin: 40pt;
+}
+
+
+@media (max-width: 425px) {
+
+  h1 {
+
+    position: relative;
+    top: 15pt;
+
+  }
+
+}
+
+
+  

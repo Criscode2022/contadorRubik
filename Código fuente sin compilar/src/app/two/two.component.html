@@ -1,0 +1,53 @@
+<main>
+  <h1 [ngClass]="{ 'rotate-cube': timerActive }">2x2</h1>
+
+  <div class="button-container">
+    <button
+      mat-raised-button
+      color="primary"
+      type="button"
+      [disabled]="timerActive"
+    >
+      Start
+    </button>
+    <button
+      mat-raised-button
+      color="warn"
+      type="button"
+      [disabled]="!timerActive"
+    >
+      Stop
+    </button>
+  </div>
+  <p class="timer" (click)="timerActive ? stopTimer() : startTimer()">
+    {{ tiempo }}
+  </p>
+
+  <div class="howto">
+    <p>Iniciar/Parar tempo: Espazo/Click</p>
+    <p>Rexistrar tempo: Enter/Botón</p>
+  </div>
+</main>
+<div class="resultados">
+  <h2>Tempos desta sesión:</h2>
+  <h2 class="float">Media desta sesión: {{ avg2 }}"</h2>
+</div>
+<div>
+  <ol>
+    <li *ngFor="let tiempo2 of tiempos2x2">{{ tiempo2 }}"</li>
+  </ol>
+
+  <button
+    class="fixed"
+    (click)="insertartiempo2()"
+    mat-fab
+    color="primary"
+    aria-label="Example icon button with a delete icon"
+  >
+    <mat-icon>save</mat-icon>
+  </button>
+</div>
+
+<footer>
+  Podes ver o teu historial de tempos rexistrados premendo na estrela
+</footer>
